@@ -7,8 +7,7 @@ function hinzufügen() {
     const produktName = selectedOption.getAttribute("data-name");
     const preis = parseFloat(selectedOption.value);
 
-    if (preis > 0) {  // Prüfen, ob eine gültige Option ausgewählt wurde
-        // Neue Zeile zur Tabelle hinzufügen
+    if (preis > 0) { 
         const table = document.getElementById("warenkorb");
         const newRow = table.insertRow();
         const cell1 = newRow.insertCell(0);
@@ -17,10 +16,11 @@ function hinzufügen() {
         cell1.innerHTML = produktName;
         cell2.innerHTML = preis.toFixed(2) + "€";
 
-        // Gesamtsumme aktualisieren
+
         gesamtSumme += preis;
         document.getElementById("gesm").innerHTML = `<p>Gesamtsumme: ${gesamtSumme.toFixed(2)}€</p>`;
     }
+
 }
 
 

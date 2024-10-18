@@ -6,13 +6,20 @@
     border-radius: 15px;
     margin-top: 5%;
 }
+
 body{
     display: flex;
     justify-content: center;
+    background-color: rgb(109, 43, 43);
 
 }
+
 input {
     outline: solid black 1px;
+}
+
+input:hover {
+    cursor: pointer;
 }
 
 table {
@@ -26,4 +33,18 @@ select {
     border: 1px solid black;
 }
 
+select:hover {
+    cursor: pointer;
+   
+}
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+}
 

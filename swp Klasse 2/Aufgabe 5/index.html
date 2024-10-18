@@ -7,15 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-        }
-    </style>
+
     
 </head>
 <body>
@@ -38,8 +30,8 @@
             <br>
             <br>
             <label for="prod">Produkt:</label>
-            <select name="product" id="product" oninput="priceOutput.value=this.value">
-                <option value="0.00">Wählen sie Blumen</option>
+            <select name="product" id="product" aria-placeholder="Wählen sie eine Blumensorte aus" oninput="priceOutput.value=this.value">
+                
                 <option value="2.99" data-name="Tulpen">Tulpen</option>
                 <option value="1.50" data-name="Lilie">Lilie</option>                                                                            
                 <option value="3.99" data-name="Rose">Rose</option>
@@ -48,7 +40,7 @@
             </select>
             <br>
             <br>
-            <label><output name="priceOutput" for="product">0.00</output>€</label>
+            <label><output name="priceOutput" for="product">2.99</output>€</label>
             <br>
             <br>
             <input type="button" value="Hinzufügen" onclick="hinzufügen()" id="button">
@@ -58,7 +50,7 @@
             <textarea name="textfeld" rows="10" cols="50" placeholder="Extra Wünsche? Dann lassen Sie es uns wissen."></textarea>
         </div>
         <hr>
-        
+
         <div class="table">
             <h1>Warenkorb</h1>
 
@@ -72,7 +64,7 @@
         </div>
         <br>
         <div id="gesm">
-            <p>Gesamtsumme +  Lieferkosten: 0,00€</p>
+            <p>Gesamtsumme +  Lieferkosten: 1,00€</p>
         </div>
         <br>
         <div class="bestellen">
