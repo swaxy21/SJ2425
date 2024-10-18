@@ -1,0 +1,29 @@
+.main {
+    background-color: grey;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    border-radius: 15px;
+    margin-top: 5%;
+}
+body{
+    display: flex;
+    justify-content: center;
+
+}
+input {
+    outline: solid black 1px;
+}
+
+table {
+    display: inline-block;
+    justify-content: center;        
+    align-items: center;
+    border: 1px solid black;
+}
+
+select {
+    border: 1px solid black;
+}
+
+

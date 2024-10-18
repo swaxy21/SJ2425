@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    border-style: dotted;
+}
+
+#headline {
+    color: burlywood;
+    font-size: 100px;
+
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}

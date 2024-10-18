@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blumengeschäft</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+    
+</head>
+<body>
+    
+
+    
+    <div class="main">
+        <div class="übers">
+            <br>
+            <h1>Blumengeschäft</h1>
+        </div>
+        <form>
+        <div class="eingabe">
+            <label for="name">Name:</label>
+            <input type="text"  placeholder="Nachname Vorname" id="name">
+            <br>
+            <br>
+            <label for="email:">E-Mail:</label>
+            <input type="text" placeholder="E-mail" id="email">
+            <br>
+            <br>
+            <label for="prod">Produkt:</label>
+            <select name="product" id="product" oninput="priceOutput.value=this.value">
+                <option value="0.00">Wählen sie Blumen</option>
+                <option value="2.99" data-name="Tulpen">Tulpen</option>
+                <option value="1.50" data-name="Lilie">Lilie</option>                                                                            
+                <option value="3.99" data-name="Rose">Rose</option>
+                <option value="5.99" data-name="Edelweiß">Edelweiß</option>
+        
+            </select>
+            <br>
+            <br>
+            <label><output name="priceOutput" for="product">0.00</output>€</label>
+            <br>
+            <br>
+            <input type="button" value="Hinzufügen" onclick="hinzufügen()" id="button">
+        </div>
+        <br>
+        <div class="text">
+            <textarea name="textfeld" rows="10" cols="50" placeholder="Extra Wünsche? Dann lassen Sie es uns wissen."></textarea>
+        </div>
+        <hr>
+        
+        <div class="table">
+            <h1>Warenkorb</h1>
+
+            <table id="warenkorb">
+                <tr>
+                    <th>Produkt</th>
+                    <th>Preis</th>
+                </tr>
+                
+            </table>
+        </div>
+        <br>
+        <div id="gesm">
+            <p>Gesamtsumme +  Lieferkosten: 0,00€</p>
+        </div>
+        <br>
+        <div class="bestellen">
+            <a href="index2.html"><input type="button" value="Bestellen"></a>
+        </div>
+        <br>
+    </div>
+</form>
+
+
+
+
+
+</body>
+</html>

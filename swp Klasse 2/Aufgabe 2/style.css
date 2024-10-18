@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+  }
+
+header {
+    font-size: xx-large;
+    text-align: center;
+    background-color: white;
+    border-radius: 25px;
+    padding-top: 0;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body {
+    background-color: black;
+    color: red;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 5px;
+    padding-top: 0px;
+
+    
+
+}
+
+
+
+#Bild1 {
+    margin-left: 15%;
+    margin-bottom: 25%;
+}
+
+#Bild3 {
+    margin-right: 0px;
+    margin-left: 15%;
+}
+
+#Bidl2 {
+    margin-left: 15%;
+}
+
+img {
+    
+    width: 400px;
+    height: 250px;
+
+
+    
+}
+
+#button {
+   
+    background-color: white;
+    border-radius: 15px;
+    padding-top: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-bottom: 5px;
+    text-align: center;
+    display: block;
+    align-items: center;
+
+}
+
+button {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    background-color: red;
+    cursor: pointer;
+    
+}
+
+
+button:hover {
+    background-color: blue;
+    
+}
+
+
+
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  
+  #row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+  #text1 { 
+    
+    text-align: center;
+    color: white;
+    font-size: 15px;
+  }

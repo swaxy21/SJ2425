@@ -1,0 +1,88 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    text-align: center; 
+    margin: 0;
+    padding: 0;
+}
+
+img.serbien-bild {
+    width: 300px;
+    height: auto;
+    margin-top: 15px;
+    border: 2px solid #333;
+}
+
+header {
+    background-color: yellow;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 3px solid black;
+    position: sticky;
+    top: 0;
+
+    
+}
+
+h2 {
+    background-color: yellow;
+    padding: 10px;
+    text-decoration: underline;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+ul, ol {
+    display: inline-block; 
+    text-align: left;     
+    margin: 0 ;        
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+#buchs {
+    list-style-type: lower-alpha;
+  
+}
+
+table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+a {
+    font-size: 20px;
+    color: black;
+}
+
+a:hover {
+    cursor: pointer;
+    background-color: blue;
+
+}
+
+p {
+    font-size: 20px;
+}
+
+iframe {
+    border: 2px solid yellow;
+    width: 90%;
+    height: 500px;
+}

@@ -1,0 +1,40 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(Unbenannt.png);
+        }
+        .Main {
+            background-color: blue;
+            padding: 20px;
+            border-radius: 8px;
+        
+        }
+        input {
+            padding: 10px;
+            margin: 5px 0;
+            width: calc(100% - 22px);
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }

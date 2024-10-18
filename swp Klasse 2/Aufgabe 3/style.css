@@ -1,0 +1,49 @@
+.automat {
+    border: 3px solid black;
+    text-align: center;
+    margin: 20px;
+    background-color: blue;
+}
+
+#feld {
+    border: 5px solid black;
+    margin: 15px;
+    color: red;
+}
+
+div #button {
+    justify-content: center;
+}
+
+#input {
+display: flex; 
+justify-content: center;
+align-items: center;
+
+}
+
+input {
+    height: 25px;
+    width: +500px;
+    text-align: center;
+}
+
+
+#button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+
+button {
+    height: 25px;
+    width: 500px;
+}
+
+
+
+
+
+
