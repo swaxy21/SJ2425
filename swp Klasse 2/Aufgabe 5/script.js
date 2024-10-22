@@ -21,6 +21,8 @@ function hinzufügen() {
         document.getElementById("gesm").innerHTML = `<p>Gesamtsumme: ${gesamtSumme.toFixed(2)}€</p>`;
     }
 
+
+    
 }
 
 
