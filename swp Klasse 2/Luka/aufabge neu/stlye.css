@@ -1,0 +1,41 @@
+.item1 {
+    grid-area: eins;
+}
+
+.item2 {
+    grid-area: zwei;
+}
+
+.item3 {
+    grid-area: drei;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px;
+    gap: 50px;
+    grid-template-areas: 
+    "eins zwei drei drei"
+    "eins zwei drei drei"
+    "eins zwei drei drei";
+    width: 500px;
+    height: 8000px;
+    background-color: blue;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.grid > div {
+    background-color: rgb(255, 0, 0);
+}
+
+.hallo:hover {
+    color: green;
+    text-decoration: underline;
+}
+
+.hallo {
+    text-decoration: none;
+}

@@ -26,4 +26,18 @@ function hinzufügen() {
 }
 
 
+ 
+function vergleicheInhalt(meinInhalt) {
+    if (meinInhalt === "Blumengeschäft") {
+        alert("Richtig");
+    } else {
+        alert("Falsch, ihre Website wird jetzt Geschlossen");
+        window.close();
+    }
+}
+
+let meinInhalt = prompt("Was soll dort stehen? (Blumengeschäft)");
+vergleicheInhalt(meinInhalt);
+   
+
 
