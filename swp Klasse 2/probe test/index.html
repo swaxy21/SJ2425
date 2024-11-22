@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obst Auswahl</title>
+    <script>
+        function abstimmen() {
+            const name = document.getElementById("name").value;
+            const obst = document.getElementById("obst1").value;
+
+            if (name === "") {
+                alert("Fehler: Geben sie ihren Namen ein");
+                return;
+            }
+
+
+            if (name.length < 5) {
+                alert("Fehler: Ihr Name ist zu kurz, dieser muss über 5 Zeichen lang sein");
+                return;
+            }
+
+            if (obst === "test") {
+                alert("Sie haben keine Obst art ausgewählt");
+                return;
+            }
+            
+            alert('Sie , ' + name + ' haben das Obst ' + obst + ' ausgewählt');
+        }
+    </script>
+    <style>
+        body{
+            background-color: grey;
+        }
+
+        .div1 {
+            margin: 150px;
+            padding: 25px;
+            text-align: center;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="div1">
+    <input type="text" id="name" placeholder="Max Mustermann" required>
+    <br>
+    <br>
+    
+    <select name="obst" id="obst1" >
+        <option value="test">Bitte wählen ein Obst aus</option>
+        <option value="Apfel">Apfel</option>
+        <option value="Birnen">Birnen</option>
+        <option value="Kirsche">Kirsche</option>
+        <option value="Marille">Marille</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="abstimmen" onclick="abstimmen()">
+</div>
+
+</body>
+</html>
