@@ -4,7 +4,7 @@ function hinzufügen() {
     const prüfen = document.getElementById("aufgabe").value;
     const ul1 = document.getElementById("liste");
 
-    if (prüfen === "") {
+    if (prüfen === "" ) {
         alert("Geben sie ihre Aufgabe ein");
        return;
     } else {
@@ -20,10 +20,11 @@ function hinzufügen() {
 
         // Button-Klick-Event hinzufügen
         hallo.addEventListener('click', function() {
-            ul1.removeChild(li); // Entferne das li-Element
+            li.remove();
+            li.style.color = "red"; // Rot machen
         });
 
-        
+        // Füge li und Button zum ul hinzu
         li.appendChild(hallo);
         ul1.appendChild(li);
 
@@ -31,3 +32,5 @@ function hinzufügen() {
         eingabe.value = '';
     }
 }
+
+window.onload(alert("Ihre To-Do Liste "))
