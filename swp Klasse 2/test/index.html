@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        //https://www.on-design.de/tutor/javascript/emailtest.htm von dieser Website Email überprüfung !
+
+
+        function start() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const auswahl = document.getElementById("dropdown").value;
+            const term = document.getElementById("bedingung").checked;
+
+            if (!name ) {
+                alert("Benutzername leer")
+                return;
+            }
+
+            if (name.length < 5) {
+                alert("Benutztername zu kurz")
+                return;
+            }
+
+            if (!email) {
+                alert("Keine Email Adresse angegeben")
+                return;
+            }
+            const mailüber = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!mailüber.test(email)) { 
+             alert("ungültige Email-adresse");
+            return;
+            }
+
+            if (!auswahl) {
+                alert("Sie haben keine Auswahl getroffen");
+                return;
+            }
+
+
+
+            if (!term) {
+                alert("Sie haben die Nutzungsbedingungen nicht akzeptiert");
+                return;
+            }
+
+            alert(`Sie ${name} haben sich für das ${auswahl} angemeldet. Vielen Dank!`);
+
+            
+        }
+
+        // abgegbgen 15.16
+    </script>
+</head>
+<body>
+
+    <input type="text" id="name" placeholder="Max Mustermann">
+    <br>
+    <input type="email" id="email" placeholder="beispiel@domain.com">
+    <br>
+    <select name="dropdown" id="dropdown">
+        <option value="">Auswahl treffen</option>
+        <option value="Frühstück">Frühstück</option>
+        <option value="Mittagessen">Mittagessen</option>
+        <option value="Abendessen">Abendessen</option>
+        <option value="Snack">Snack</option>
+    </select>
+    <br>
+    <label>Ich akzeptiere die Nutztungsbedingungen <input id="bedingung" type="checkbox"></label>
+    <br>
+    <input type="button" id="" onclick="start()" value="abstimmen">
+</body>
+</html>
