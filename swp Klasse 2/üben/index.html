@@ -3,17 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        #answers button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #answers button:hover {
+            background-color: #0056b3;
+        }
+
+        .correct {
+            background-color: #28a745 !important;
+        }
+
+        .wrong {
+            background-color: #dc3545 !important;
+        }
+
+        #nextButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #nextButton:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #score {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-    <div id="div1">
-        <h1>To-Do List</h1>
-        <input type="text" id="aufgabe">
-        <button id="hinzufügen" onclick="hinzufügen()">hinzufügen</button>
-        <ul id="liste"></ul>
-        
+    <div class="quiz-container">
+        <h1>Quiz Game</h1>
+        <div id="quiz">
+            <p id="question"></p>
+            <div id="answers"></div>
+        </div>
+        <button id="nextButton" disabled>Next</button>
+        <p id="score"></p>
     </div>
+    <script>
+        const quizData = [
+            {
+                question: "What is the capital of France?",
+                answers: ["Paris", "London", "Berlin", "Madrid"],
+                correct: 0
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                answers: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correct: 1
+            },
+            {
+                question: "Who wrote 'To Kill a Mockingbird'?",
+                answers: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Jane Austen"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById('question');
+        const answersEl = document.getElementById('answers');
+        const nextButton = document.getElementById('nextButton');
+        const scoreEl = document.getElementById('score');
+
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestion];
+            questionEl.textContent = currentQuiz.question;
+
+            answersEl.innerHTML = '';
+            currentQuiz.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.textContent = answer;
+                button.addEventListener('click', () => selectAnswer(index));
+                answersEl.appendChild(button);
+            });
+
+            nextButton.disabled = true;
+        }
+
+        function selectAnswer(selectedIndex) {
+            const currentQuiz = quizData[currentQuestion];
+            const buttons = answersEl.querySelectorAll('button');
+
+            buttons.forEach((button, index) => {
+                if (index === currentQuiz.correct) {
+                    button.classList.add('correct');
+                } else if (index === selectedIndex) {
+                    button.classList.add('wrong');
+                }
+                button.disabled = true;
+            });
+
+            if (selectedIndex === currentQuiz.correct) {
+                score++;
+            }
+
+            nextButton.disabled = false;
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showScore();
+            }
+        });
+
+        function showScore() {
+            quiz.innerHTML = `<p>You scored ${score} out of ${quizData.length}!</p>`;
+            nextButton.style.display = 'none';
+        }
+
+        loadQuestion();
+    </script>
 </body>
 </html>
