@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h2>Cookie Klicker</h2>
+    </header>
+
+    <div class="main-container">
+  
+        
+      <div class="cookie-section">
+            
+        <p id="counter">0 Cookie's gesammelt</p>
+   
+        <svg
+          id="picture1"
+          height="500"
+          width="500"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <image
+            width="500"
+            height="300"
+            href="https://www.svgrepo.com/show/417269/cookie.svg"
+            onclick="myCookie()"
+          />
+        </svg>
+      </div>
+      
+
+ 
+      <div class="upgrade-section">
+        <table class="BuyArtikel">
+            <tr>
+                <h3>Autoclicker</h3>
+            </tr>
+          <tr>
+            <td onclick="myNormalClicker()">
+              <p>Normaler Autockliker</p>
+              <svg
+                height="100"
+                width="100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <image
+                  width="100"
+                  height="100"
+                  href="Normal.png"
+                  onclick="myClicker()"
+                />
+              </svg>
+              <p>100 Cookies</p>
+              <p id="normal">0/100</p>
+            </td>
+            <td onclick="myRareClicker()">
+              <p>Seltener Autocklicker</p>
+              <svg
+                height="100"
+                width="100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <image
+                  width="100"
+                  height="100"
+                  href="Selten.png"
+                  onclick="myClicker()"
+                />
+              </svg>
+              <p>250 Cookies</p>
+              <p id="rare">0/50</p>
+            </td>
+          </tr>
+          <tr>
+            <td onclick="myEpicClicker()">
+              <p>Epischer Autocklicker</p>
+              <svg
+                height="100"
+                width="100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <image
+                  width="100"
+                  height="100"
+                  href="Episch.png"
+                  onclick="myClicker()"
+                />
+              </svg>
+              <p>500 Cookies</p>
+              <p id="epic">Anzahl 0/25</p>
+            </td>
+            <td onclick="myLegendClicker()">
+              <p>Legendärer Autocklicker</p>
+              <svg
+                height="100"
+                width="100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <image
+                  width="100"
+                  height="100"
+                  href="Legänder.png"
+                  onclick="myClicker()"
+                />
+              </svg>
+              <p>1000 Cookies</p>
+              <p id="legend">Anzahl 0/10 </p>
+            </td>
+          </tr>
+          <div class="multiplier-section">
+            <p id="multiplier">Aktueller Multiplikator: 1</p>
+            <button id="multiplierButton" onclick="myMultiplier()">Multiplikator kaufen</button>
+            <p id="multiplierCost">Kosten: 10000 Cookies</p>
+    
+          </div>
+        </table>
+      </div>
+      
+    </div>
+
+    <div id="customAlert" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeAlert()">&times;</span>
+        <p id="alertMessage"></p>
+      </div>
+    </div>
+  </body>
+</html>
