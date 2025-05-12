@@ -4,6 +4,7 @@ let normalClickercount = 0;
 let rareClickercount = 0;
 let epicClickercount = 0;
 let legendClickercount = 0;
+let resetcount = 0;
 
 function loadProgress() {
   const savedCounter = localStorage.getItem("counter");
@@ -74,6 +75,9 @@ function showAlert(message) {
   const alertMessage = document.getElementById("alertMessage");
   alertMessage.textContent = message;
   modal.style.display = "block";
+  setTimeout(() => {
+    closeAlert();
+  }, 4000);
 }
 
 function closeAlert() {
@@ -91,7 +95,37 @@ function myCookie() {
       picture.classList.remove("animate");
     },
     { once: true }
+    
   );
+
+    const floatingCookie = document.createElement("img");
+  floatingCookie.src = "https://www.svgrepo.com/show/417269/cookie.svg";
+  floatingCookie.className = "floating-cookie";
+
+  const cookieSection = document.querySelector(".cookie-section");
+  const cookieRect = picture.getBoundingClientRect();
+  const sectionRect = cookieSection.getBoundingClientRect();
+
+  const maxX = 500 - 50; 
+  const maxY = 300 - 50; 
+  const randX = Math.random() * maxX;
+  const randY = Math.random() * maxY;
+
+  floatingCookie.style.left = `${randX}px`;
+  floatingCookie.style.top = `${randY}px`;
+
+    floatingCookie.style.transform = "none";
+
+ 
+  cookieSection.appendChild(floatingCookie);
+
+ 
+  floatingCookie.addEventListener("animationend", () => {
+    floatingCookie.remove();
+  });
+
+
+
   if (multiplier >= 5) {
     counter += multiplier;
   } else {
@@ -196,13 +230,17 @@ function myReset() {
   updateCounterLabel();
   updateClickerCount();
   document.getElementById("perSecond").innerHTML = "0 Cookies pro Sekunde";
-  showAlert("Fortschritt zurückgesetzt!");
-  setTimeout(() => {
+  showAlert("Du hast das Spiel zurückgesetzt!");
+    setTimeout(() => {
     closeAlert();
   }, 4000);
   setTimeout(() => {
     location.reload();
   }, 4000);
+  resetcount++;
+  resetBoost();
+  
+  
 }
 
 function Skins() {
@@ -300,6 +338,21 @@ function Medal2() {
 
   
 }
+
+function resetBoost() { // ein Boost wenn man 5 mal resetet
+if (resetcount >= 5) {
+    resetcount = 0;
+    showAlert("Du hast 5 Reset's gemacht! Du bekommst einen Boost");
+    counter += 1000;
+    updateCounterLabel();
+    normalClickercount += 10;
+    rareClickercount += 5;
+    epicClickercount += 2;
+    legendClickercount += 1;
+    updateClickerCount();
+  
+    }
+  }
 
 document.addEventListener("DOMContentLoaded", function () {
   Skins();
