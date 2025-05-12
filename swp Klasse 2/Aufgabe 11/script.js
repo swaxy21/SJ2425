@@ -4,30 +4,15 @@ let normalClickercount = 0;
 let rareClickercount = 0;
 let epicClickercount = 0;
 let legendClickercount = 0;
-let normalClickerActive = false;
-let rareClickerActive = false;
-let epicClickerActive = false;
-let legendClickerActive = false;
-
 
 function loadProgress() {
   const savedCounter = localStorage.getItem("counter");
-  const savedNormalClicker = localStorage.getItem("normalClickerActive");
-  const savedRareClicker = localStorage.getItem("rareClickerActive");
-  const savedEpicClicker = localStorage.getItem("epicClickerActive");
-  const savedLegendClicker = localStorage.getItem("legendClickerActive");
-
   const savedNormalClickercount = localStorage.getItem("normalClickercount");
   const savedRareClickercount = localStorage.getItem("rareClickercount");
   const savedEpicClickercount = localStorage.getItem("epicClickercount");
   const savedLegendClickercount = localStorage.getItem("legendClickercount");
 
   if (savedCounter !== null) counter = parseInt(savedCounter);
-  if (savedNormalClicker === "true") activateNormalClicker();
-  if (savedRareClicker === "true") activateRareClicker();
-  if (savedEpicClicker === "true") activateEpicClicker();
-  if (savedLegendClicker === "true") activateLegendClicker();
-
   if (savedNormalClickercount !== null)
     normalClickercount = parseInt(savedNormalClickercount);
   if (savedRareClickercount !== null)
@@ -39,15 +24,11 @@ function loadProgress() {
 
   updateCounterLabel();
   updateClickerCount();
+  updateCookiesPerSecond();
 }
 
 function saveProgress() {
   localStorage.setItem("counter", counter);
-  localStorage.setItem("normalClickerActive", normalClickerActive);
-  localStorage.setItem("rareClickerActive", rareClickerActive);
-  localStorage.setItem("epicClickerActive", epicClickerActive);
-  localStorage.setItem("legendClickerActive", legendClickerActive);
-
   localStorage.setItem("normalClickercount", normalClickercount);
   localStorage.setItem("rareClickercount", rareClickercount);
   localStorage.setItem("epicClickercount", epicClickercount);
@@ -58,6 +39,8 @@ function updateCounterLabel() {
   document.getElementById("counter").innerHTML =
     counter + " Cookie's gesammelt";
   saveProgress();
+  Medal1();
+  Medal2();
 }
 
 function updateClickerCount() {
@@ -65,7 +48,26 @@ function updateClickerCount() {
   document.getElementById("rare").innerHTML = `${rareClickercount}/50`;
   document.getElementById("epic").innerHTML = `${epicClickercount}/25`;
   document.getElementById("legend").innerHTML = `${legendClickercount}/10`;
+ 
 }
+
+function updateCookiesPerSecond() {
+  const cookiesPerSecond =
+    normalClickercount * 1 +
+    rareClickercount * 5 +
+    epicClickercount * 10 +
+    legendClickercount * 25;
+
+  document.getElementById("perSecond").innerHTML =
+    cookiesPerSecond + " Cookies pro Sekunde";
+
+  
+  counter += cookiesPerSecond;
+  updateCounterLabel();
+}
+
+
+setInterval(updateCookiesPerSecond, 1000);
 
 function showAlert(message) {
   const modal = document.getElementById("customAlert");
@@ -92,15 +94,15 @@ function myCookie() {
   );
   if (multiplier >= 5) {
     counter += multiplier;
-  } else{
+  } else {
     counter += 1;
   }
-  
+
   updateCounterLabel();
 }
 
 function myMultiplier() {
-  if (counter < 1) {
+  if (counter <= 10000) {
     showAlert("Du hast nicht genug Cookies");
   } else {
     counter -= 1;
@@ -114,169 +116,193 @@ function myMultiplier() {
   }
 }
 
-function activateNormalClicker() {
-  if (!normalClickerActive) {
-    normalClickerActive = true;
-    setInterval(() => {
-      counter += 1;
-      updateCounterLabel();
-    }, 1000);
-  }
-}
-
-function activateRareClicker() {
-  if (!rareClickerActive) {
-    rareClickerActive = true;
-    setInterval(() => {
-      counter += 5;
-      updateCounterLabel();
-    }, 1000);
-  }
-}
-
-function activateEpicClicker() {
-  if (!epicClickerActive) {
-    epicClickerActive = true;
-    setInterval(() => {
-      counter += 10;
-      updateCounterLabel();
-    }, 1000);
-  }
-}
-
-function activateLegendClicker() {
-  if (!legendClickerActive) {
-    legendClickerActive = true;
-    setInterval(() => {
-      counter += 50;
-      updateCounterLabel();
-    }, 1000);
-  }
-}
-
 function myNormalClicker() {
-  if (counter < 1) {
-    showAlert("Du hast nicht genug Cookies");
+  if (counter < 100 ){
+    showAlert("Du hast nicht genug Cookies oder 100 Autoklicker gekauft");
   } else {
-    counter -= 1;
-    normalClickercount++; // Erhöhe die Anzahl der normalen Autoklicker
+    counter -= 100;
+    normalClickercount++; //100
     updateCounterLabel();
-    updateClickerCount(); // Aktualisiere die Anzeige der Autoklicker
-    showAlert("Normaler Autoklicker gekauft für 100 Cookies");
-    activateNormalClicker();
+    updateClickerCount();
+   showAlert("Normaler Autoklicker gekauft für 1 Cookie");
+  }
+  if (normalClickercount >= 100) {
+    showAlert("Du hast 100 Autoklicker gekauft! Du kannst keine weiteren kaufen.");
+    normalClickercount = 100; 
+    updateClickerCount();
   }
 }
 
 function myRareClicker() {
-  if (counter < 25) {
+  if (counter < 250) {
     showAlert("Du hast nicht genug Cookies");
   } else {
-    counter -= 25;
-    rareClickercount++; // Erhöhe die Anzahl der seltenen Autoklicker
+    counter -= 250; //250
+    rareClickercount++;
     updateCounterLabel();
-    updateClickerCount(); // Aktualisiere die Anzeige der Autoklicker
-    showAlert("Seltener Autoklicker gekauft für 250 Cookies");
-    activateRareClicker();
+    updateClickerCount();
+    showAlert("Seltener Autoklicker gekauft für 25 Cookies");
   }
+  if (rareClickercount >= 50) {
+    showAlert("Du hast 50 Autoklicker gekauft! Du kannst keine weiteren kaufen.");
+    rareClickercount = 50; 
+    updateClickerCount();
+  }
+
 }
 
 function myEpicClicker() {
-  if (counter < 5) {
+  if (counter < 500) {
     showAlert("Du hast nicht genug Cookies");
   } else {
-    counter -= 5;
+    counter -= 500; //500
     epicClickercount++;
     updateCounterLabel();
     updateClickerCount();
     showAlert("Epischer Autoklicker gekauft für 500 Cookies");
-    activateEpicClicker();
+  }
+  if (epicClickercount >= 25) {
+    showAlert("Du hast 500 Autoklicker gekauft! Du kannst keine weiteren kaufen.");
+    epicClickercount = 25; 
+    updateClickerCount();
   }
 }
 
 function myLegendClicker() {
-  if (counter < 10) {
+  if (counter < 1000) {
     showAlert("Du hast nicht genug Cookies");
   } else {
-    counter -= 10;
+    counter -= 1000; //1000
     legendClickercount++;
     updateCounterLabel();
     updateClickerCount();
     showAlert("Legendärer Autoklicker gekauft für 1000 Cookies");
-    activateLegendClicker();
   }
-}
-
-function updateClickerCount() {
-  document.getElementById("normal").innerHTML = `${normalClickercount}/100`;
-  document.getElementById("rare").innerHTML = `${rareClickercount}/50`;
-  document.getElementById("epic").innerHTML = `${epicClickercount}/25`;
-  document.getElementById("legend").innerHTML = `${legendClickercount}/10`;
+  if (legendClickercount >= 10) {
+    showAlert("Du hast 1000 Autoklicker gekauft! Du kannst keine weiteren kaufen.");
+    legendClickercount = 10; 
+    updateClickerCount();
+  }
 }
 
 function myReset() {
-    localStorage.clear();
+  localStorage.clear();
+  counter = 0;
+  multiplier = 0;
+  normalClickercount = 0;
+  rareClickercount = 0;
+  epicClickercount = 0;
+  legendClickercount = 0;
+  updateCounterLabel();
+  updateClickerCount();
+  document.getElementById("perSecond").innerHTML = "0 Cookies pro Sekunde";
+  showAlert("Fortschritt zurückgesetzt!");
+  setTimeout(() => {
+    closeAlert();
+  }, 4000);
+  setTimeout(() => {
     location.reload();
-  }
+  }, 4000);
+}
 
 function Skins() {
-    let normalSkinGekauft = false;
-    let epicSkinGekauft = false;
-    let legendSkinGekauft = false;
-  
-    function changeCookieSkin(imageUrl) {
-      const cookieImage = document.querySelector("#picture1 image");
-      cookieImage.setAttribute("href", imageUrl);
-    }
-  
-    document.getElementById("normalCookie").addEventListener("click", function() {
-      if (!normalSkinGekauft) {
-        if (counter >= 5) {
-          counter -= 5;
-          updateCounterLabel();
-          changeCookieSkin("grauCo.png");
-          showAlert("Normaler Skin gekauft!");
-          normalSkinGekauft = true;
-        } else {
-          showAlert("Nicht genug Cookies für Normalen Skin!");
-        }
-      } else {
-        showAlert("Normaler Skin bereits gekauft!");
-      }
-    });
-  
-    document.getElementById("epicCookie").addEventListener("click", function() {
-      if (!epicSkinGekauft) {
-        if (counter >= 10) {
-          counter -= 10;
-          updateCounterLabel();
-          changeCookieSkin("epicCo.png");
-          showAlert("Epischer Skin gekauft!");
-          epicSkinGekauft = true;
-        } else {
-          showAlert("Nicht genug Cookies für Epischen Skin!");
-        }
-      } else {
-        showAlert("Epischer Skin bereits gekauft!");
-      }
-    });
-  
-    document.getElementById("legendCookie").addEventListener("click", function() {
-      if (!legendSkinGekauft) {
-        if (counter >= 5) {
-          counter -= 5;
-          updateCounterLabel();
-          changeCookieSkin("legendCo.png");
-          showAlert("Legendärer Skin gekauft!");
-          legendSkinGekauft = true;
-        } else {
-          showAlert("Nicht genug Cookies für Legendären Skin!");
-        }
-    }else {
-        showAlert("Legendärer Skin bereits gekauft!");
-      }
-    });
+  let normalSkinGekauft = localStorage.getItem("normalSkinGekauft") === "true";
+  let epicSkinGekauft = localStorage.getItem("epicSkinGekauft") === "true";
+  let legendSkinGekauft = localStorage.getItem("legendSkinGekauft") === "true";
+
+  function changeCookieSkin(imageUrl) {
+    const cookieImage = document.querySelector("#picture1 image");
+    cookieImage.setAttribute("href", imageUrl);
+  }
+
+  if (normalSkinGekauft) {
+    changeCookieSkin("grauCo.png");
+  } else if (epicSkinGekauft) {
+    changeCookieSkin("epicCo.png");
+  } else if (legendSkinGekauft) {
+    changeCookieSkin("legendCo.png");
   }
   
-  document.addEventListener("DOMContentLoaded", Skins);
 
-window.onload = loadProgress
+
+  document.getElementById("normalCookie").addEventListener("click", function () {
+    if (!normalSkinGekauft) {
+      if (counter >= 500) {
+        counter -= 500;
+        updateCounterLabel();
+        changeCookieSkin("grauCo.png");
+        showAlert("Normaler Skin gekauft!");
+        normalSkinGekauft = true;
+        localStorage.setItem("normalSkinGekauft", true);
+      } else {
+        showAlert("Nicht genug Cookies für Normalen Skin!");
+      }
+    } else {
+      showAlert("Normaler Skin bereits gekauft!");
+    }
+  });
+
+  document.getElementById("epicCookie").addEventListener("click", function () {
+    if (!epicSkinGekauft) {
+      if (counter >= 1000) {
+        counter -= 1000;
+        updateCounterLabel();
+        changeCookieSkin("epicCo.png");
+        showAlert("Epischer Skin gekauft!");
+        epicSkinGekauft = true;
+        localStorage.setItem("epicSkinGekauft", true);
+      } else {
+        showAlert("Nicht genug Cookies für Epischen Skin!");
+      }
+    } else {
+      showAlert("Epischer Skin bereits gekauft!");
+    } 
+  });
+
+  document.getElementById("legendCookie").addEventListener("click", function () {
+    if (!legendSkinGekauft) {
+      if (counter >= 5000) {
+        counter -= 5000;
+        updateCounterLabel();
+        changeCookieSkin("legendCo.png");
+        showAlert("Legendärer Skin gekauft!");
+        legendSkinGekauft = true;
+        localStorage.setItem("legendSkinGekauft", true);
+      } else {
+        showAlert("Nicht genug Cookies für Legendären Skin!");
+      }
+    } else {
+      showAlert("Legendärer Skin bereits gekauft!");
+    }
+  });
+}
+
+function Medal1() {
+  const medal1 = document.getElementById("Medal1");
+  if (counter >= 100) {
+    medal1.style.color = "green";
+    document.getElementById("Medal1").innerHTML = "Sammel 100 Cookies 1/1";
+
+  } else {
+    medal1.style.color = "red";
+    document.getElementById("Medal1").innerHTML = "Sammel 100 Cookies 0/1";
+  }
+}
+function Medal2() {
+  const medal2 = document.getElementById("Medal2");
+  if (counter >= 1000) {
+    medal2.style.color = "green";
+    document.getElementById("Medal2").innerHTML = "Sammel 1000 Cookies 1/1";
+  } else {
+    medal2.style.color = "red";
+    document.getElementById("Medal2").innerHTML = "Sammel 1000 Cookies 0/1";
+  }
+
+  
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  Skins();
+  loadProgress();
+  updateCookiesPerSecond();
+});

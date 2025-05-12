@@ -13,6 +13,7 @@
     <div class="main-container">
       <div class="cookie-section">
         <p id="counter">0 Cookie's gesammelt</p>
+        <p id="perSecond">0 cookies pro sekunde</p>
 
         <svg
           id="picture1"
@@ -26,6 +27,7 @@
             href="https://www.svgrepo.com/show/417269/cookie.svg"
             onclick="myCookie()"
           />
+          
         </svg>
         <button onclick="myReset()" class="reset-button">Reset</button>
       </div>
@@ -42,6 +44,11 @@
           <p>5000</p>
         </button>
       </div>
+      <div class="new-section">
+        <h3>Achievment</h3>
+        <p style="color: red;  padding: 15px;" id="Medal1">Sammel 100 Cookies 0/1</p>
+        <p style="color: red;" id="Medal2">Sammel 1000 Cookies 0/1</p>
+      </div>
 
       <div class="upgrade-section">
         <table class="BuyArtikel">
@@ -56,7 +63,6 @@
                   width="100"
                   height="100"
                   href="Normal.png"
-                  onclick="myClicker()"
                 />
               </svg>
               <p>100 Cookies</p>
@@ -69,7 +75,7 @@
                   width="100"
                   height="100"
                   href="Selten.png"
-                  onclick="myClicker()"
+                  
                 />
               </svg>
               <p>250 Cookies</p>
@@ -84,8 +90,7 @@
                   width="100"
                   height="100"
                   href="Episch.png"
-                  onclick="myClicker()"
-                />
+                  />
               </svg>
               <p>500 Cookies</p>
               <p id="epic">0/25</p>
@@ -97,7 +102,7 @@
                   width="100"
                   height="100"
                   href="Legänder.png"
-                  onclick="myClicker()"
+                 
                 />
               </svg>
               <p>1000 Cookies</p>
