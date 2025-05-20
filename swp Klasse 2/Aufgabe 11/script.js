@@ -106,7 +106,7 @@ function myCookie() {
   const cookieRect = picture.getBoundingClientRect();
   const sectionRect = cookieSection.getBoundingClientRect();
 
-  const maxX = 500 - 50; 
+  const maxX = 500 - 50;  
   const maxY = 300 - 50; 
   const randX = Math.random() * maxX;
   const randY = Math.random() * maxY;
@@ -231,13 +231,8 @@ function myReset() {
   updateClickerCount();
   document.getElementById("perSecond").innerHTML = "0 Cookies pro Sekunde";
   showAlert("Du hast das Spiel zurückgesetzt!");
-    setTimeout(() => {
-    closeAlert();
-  }, 4000);
-  setTimeout(() => {
-    location.reload();
-  }, 4000);
   resetcount++;
+  console.log("Reset count: " + resetcount);
   resetBoost();
   
   
@@ -354,6 +349,9 @@ if (resetcount >= 5) {
     }
   }
 
+
+
+  
 document.addEventListener("DOMContentLoaded", function () {
   Skins();
   loadProgress();
